@@ -6,6 +6,7 @@
     <title>User Login</title>
     <!-- Add Bootstrap CSS link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- Add custom CSS for styling -->
     <style>
         body {

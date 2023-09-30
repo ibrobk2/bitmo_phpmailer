@@ -6,6 +6,7 @@
     <title>User Registration</title>
     <!-- Add Bootstrap CSS link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <!-- Add custom CSS for styling -->
     <style>
         body {
@@ -28,31 +29,32 @@
     </style>
 </head>
 <body>
-    <?php include_once('../auth'); ?>
+    <?php include_once('../auth/index.php'); ?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 registration-container">
-                <h2 class="form-header">User Registration</h2>
+                <h2 class="form-header">CREATE AN ACCOUNT</h2>
+                    <?php include("../includes/errors.php"); ?>
                 <form action="index.php" method="post">
                     <div class="form-group">
                         <label for="fullName">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" name="full_name" required>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" name="full_name" >
                     </div>
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Choose a username" name="username" required>
+                        <input type="text" class="form-control" id="username" placeholder="Choose a username" name="username" >
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone</label>
-                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone" required>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" name="phone" >
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email address" name="email" required>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email address" name="email" >
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password" required>
+                        <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password" >
                     </div>
                     <button type="submit" class="btn btn-primary btn-block form-control mb-3" name="signup">Register</button>
                 </form>

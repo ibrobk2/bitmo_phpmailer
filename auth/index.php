@@ -1,6 +1,7 @@
 <?php
 // Establish Database Connection
 require('../model/server.php');
+require('../includes/sendEmail.php'); //08130171357
 
 $errors = array();//Errors array
 
@@ -53,6 +54,26 @@ if(isset($_POST['signup'])){
         }
     }
 
+}
+
+if(count($errors)===0){
+    $sql = "INSERT INTO users (`full_name`, `username`, `phone`, `email`, `password`) VALUES (?,?,?,?,?)";
+    $st = $conn->prepare($sql);
+    $st->bind_param('sssss', $full_name, $username, $phone, $email, $password);
+
+    if($st->execute()){
+        $recieversEmail = $email;
+        $subject = "Email Verification";
+        $token = substr((time()*rand()),1,6);
+        $body = "Hello {$full_name} your OTP code is: <b>{$token}</b>";
+        if(sendEmail($sendersEmail, $sendersPassword, $recieversEmail, $subject, $body)){
+            echo "<script>
+            swal.fire('Done', 'Account Created Successfully, OTP sent to {$recieversEmail}', 'success')
+            .then(function(result){if(result){window.location = '../verify_email'}});
+        </script>";
+        }
+       
+    }
 }
 
 
