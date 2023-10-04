@@ -54,6 +54,7 @@
 
     <script>
         $(document).ready(function () {
+            // Fetch Data Plans Section
             $("#data_type").change(function(){
                 var data_type = $(this).val();
 
@@ -63,6 +64,21 @@
                     data: {data_type: data_type},
                     success: function(res){
                         $("#plan").html(res);
+                    }
+                });
+
+            })
+
+            // Fetch Amount Section 
+            $("#plan").change(function(){
+                var plan = $(this).val();
+
+                $.ajax({
+                    url: "fetch_amount.php",
+                    type: "POST",
+                    data: {plan: plan},
+                    success: function(res){
+                        $("#amount").val(res);
                     }
                 });
 

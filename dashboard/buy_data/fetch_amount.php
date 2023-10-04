@@ -1,3 +1,4 @@
+
 <?php
                     // Replace database connection details with your own
                     $servername = "localhost";
@@ -12,19 +13,18 @@
                     if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                     }
-                    if(isset($_POST['data_type'])){
+                    if(isset($_POST['plan'])){
 
                    
                     // Query to fetch plans based on data_type
-                    $data_type = $_POST['data_type']; // Make sure to sanitize and validate user input
-                    $sql = "SELECT DISTINCT plan_name FROM data_plans WHERE data_type = '$data_type'";
+                    $plan = $_POST['plan']; // Make sure to sanitize and validate user input
+                    $sql = "SELECT * FROM data_plans WHERE plan_name = '$plan'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
-                        echo "<option value='select'>Select Plan</option>";
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<option value="' . $row['plan_name'] . '">' . $row['plan_name'] . '</option>';
-                        }
+                        $row = $result->fetch_assoc();
+                            echo $row['amount'];
+                        
                     }
                     $conn->close();
                 }
