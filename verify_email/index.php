@@ -22,9 +22,9 @@
     <form action="verify_email.php" method="get">
         <div class="form-group">
             <label for="otp">Enter OTP Code:</label>
-            <input type="text" class="form-control" placeholder="Enter OTP">
+            <input type="text" class="form-control" placeholder="Enter OTP" name="token">
         </div>
-        <button type="submit" class="btn btn-success form-control mt-3">Verify</button>
+        <button type="submit" class="btn btn-success form-control mt-3" name="verify">Verify</button>
     </form>
   </main>
   <footer>

@@ -54,28 +54,35 @@ if(isset($_POST['signup'])){
         }
     }
 
-}
+
 
 if(count($errors)===0){
-    $sql = "INSERT INTO users (`full_name`, `username`, `phone`, `email`, `password`) VALUES (?,?,?,?,?)";
+    $token = substr((time()*rand()),1,6);
+    $sql = "INSERT INTO users (`full_name`, `username`, `phone`, `email`, `password`, `token`) VALUES (?,?,?,?,?,?)";
     $st = $conn->prepare($sql);
-    $st->bind_param('sssss', $full_name, $username, $phone, $email, $password);
+    $st->bind_param('ssssss', $full_name, $username, $phone, $email, $password, $token);
 
     if($st->execute()){
         $recieversEmail = $email;
         $subject = "Email Verification";
-        $token = substr((time()*rand()),1,6);
+      
         $body = "Hello {$full_name} your OTP code is: <b>{$token}</b>";
         if(sendEmail($sendersEmail, $sendersPassword, $recieversEmail, $subject, $body)){
             echo "<script>
             swal.fire('Done', 'Account Created Successfully, OTP sent to {$recieversEmail}', 'success')
             .then(function(result){if(result){window.location = '../verify_email'}});
         </script>";
+        }else{
+            echo "<script>
+            swal.fire('Error!', 'Sorry {$full_name}, OTP could not be sent to {$recieversEmail}', 'error')
+            .then(function(result){if(result){window.location = '../login'}});
+        </script>";
         }
        
     }
 }
 
+}
 
 
 

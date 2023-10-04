@@ -29,20 +29,21 @@
     </style>
 </head>
 <body>
+    <?php include "login.php"; ?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 login-container">
                 <h2 class="form-header">User Login</h2>
-                <form>
+                <form action="index.php" method="post">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" placeholder="Enter your username" required>
+                        <input type="text" class="form-control" name="username" placeholder="Enter your username" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Enter your password" required>
+                        <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block form-control mb-3">Login</button>
+                    <button type="submit" class="btn btn-primary btn-block form-control mb-3" name="btn_login">Login</button>
                 </form>
                 <p class="text-center">Dont Have an Account <a href="../signup"> Signup Here</a></p>
             </div>
