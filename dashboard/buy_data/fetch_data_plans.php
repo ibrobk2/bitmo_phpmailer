@@ -17,13 +17,13 @@
                    
                     // Query to fetch plans based on data_type
                     $data_type = $_POST['data_type']; // Make sure to sanitize and validate user input
-                    $sql = "SELECT DISTINCT plan_name FROM data_plans WHERE data_type = '$data_type'";
+                    $sql = "SELECT DISTINCT plan_name, plan_id FROM data_plans WHERE data_type = '$data_type'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {
                         echo "<option value='select'>Select Plan</option>";
                         while ($row = $result->fetch_assoc()) {
-                            echo '<option value="' . $row['plan_name'] . '">' . $row['plan_name'] . '</option>';
+                            echo '<option value="' . $row['plan_id'] . '">' . $row['plan_name'] . '</option>';
                         }
                     }
                     $conn->close();

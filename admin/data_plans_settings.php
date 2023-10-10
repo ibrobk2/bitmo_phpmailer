@@ -45,7 +45,7 @@
 
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
-                            echo '<option value="' . $row['id'] . '">' . $row['plan_name'] . '</option>';
+                            echo '<option value="' . $row['plan_id'] . '">' . $row['plan_name'] . '</option>';
                         }
                     }
                     $conn->close();

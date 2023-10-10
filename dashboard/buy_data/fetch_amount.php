@@ -18,7 +18,7 @@
                    
                     // Query to fetch plans based on data_type
                     $plan = $_POST['plan']; // Make sure to sanitize and validate user input
-                    $sql = "SELECT * FROM data_plans WHERE plan_name = '$plan'";
+                    $sql = "SELECT * FROM data_plans WHERE plan_id = '$plan'";
                     $result = $conn->query($sql);
 
                     if ($result->num_rows > 0) {

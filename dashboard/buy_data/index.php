@@ -12,7 +12,7 @@
             <div class="form-group">
                 <label for="network">Network:</label>
                 <select class="form-control" id="network" name="network">
-                    <option value="MTN">MTN</option>
+                    <option value="1">MTN</option>
                     <option value="AIRTEL">AIRTEL</option>
                     <option value="GLO">GLO</option>
                     <option value="9MOBILE">9MOBILE</option>
@@ -43,7 +43,7 @@
                 <!-- Fetch and display amount based on the selected plan from the database -->
                 <input type="text" class="form-control" id="amount" name="amount" readonly>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="buy_data">Submit</button>
         </form>
     </div>
 
